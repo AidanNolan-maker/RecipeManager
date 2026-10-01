@@ -1,5 +1,6 @@
 package com.aidan.recipemanager;
 
+import com.aidan.recipemanager.database.DatabaseInitializer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) {
+        DatabaseInitializer.initialize();
+
         Label label = new Label("Recipe Manager");
 
         StackPane root = new StackPane(label);
