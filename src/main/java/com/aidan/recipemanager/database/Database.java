@@ -8,7 +8,7 @@ import java.sql.Statement;
 public final class Database {
     private static final String URL = "jdbc:sqlite:recipe-manager.db";
 
-    private Database(){
+    private Database() {
     }
 
     public static Connection getConnection() throws SQLException {
