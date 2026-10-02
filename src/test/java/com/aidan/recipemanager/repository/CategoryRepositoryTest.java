@@ -137,4 +137,37 @@ public class CategoryRepositoryTest {
                 exception.getMessage()
         );
     }
+
+    @Test
+    void deleteById_shouldFailWhenCategoryIsUsedByRecipe() throws SQLException {
+        Category category = repository.save(
+                new Category(0, "Breakfast")
+        );
+
+        try (var statement = connection.createStatement()) {
+            statement.execute("""
+                INSERT INTO recipes (
+                    name,
+                    category_id,
+                    prep_time,
+                    cook_time,
+                    servings,
+                    favorite
+                )
+                VALUES (
+                    'Pancakes',
+                    %d,
+                    10,
+                    15,
+                    4,
+                    0
+                )
+                """.formatted(category.getId()));
+        }
+
+        assertThrows(
+                RuntimeException.class,
+                () -> repository.deleteById(category.getId())
+        );
+    }
 }

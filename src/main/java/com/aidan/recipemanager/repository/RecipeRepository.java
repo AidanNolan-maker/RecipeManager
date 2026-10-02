@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class RecipeRepository {
+public class RecipeRepository implements RecipeRepositoryInterface {
     private static final String BASE_SELECT = """
             SELECT
                 r.id,

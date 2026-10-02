@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CategoryRepository {
+public class CategoryRepository implements CategoryRepositoryInterface {
     private final DatabaseConnectionProvider connectionProvider;
 
     public CategoryRepository() {
